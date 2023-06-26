@@ -1,0 +1,55 @@
+Brute force approach :
+
+    bool isPalindrome(ListNode* head) {
+        vector<int> v;
+        ListNode *temp;
+        temp = head;
+
+        while(temp!=NULL){
+            v.push_back(temp->val);
+            temp = temp->next;
+        }
+
+        vector<int> v2(v.rbegin(),v.rend());
+
+        for(int i=0; i<v.size(); i++){
+            if(v[i]!=v2[i])
+                return false;
+        }
+        return true;
+    }
+
+Optimised approach :
+
+  ListNode* reverse(ListNode* ptr){
+    ListNode* pre=NULL;
+    ListNode* nex=NULL;
+        while(ptr!=NULL) {
+            nex = ptr->next;
+            ptr->next = pre;
+            pre=ptr;
+            ptr=nex;
+        }
+    return pre;
+    }
+    bool isPalindrome(ListNode* head) {
+       ListNode *temp;
+        ListNode *slow, *fast;
+        slow  = head;
+        fast = head;
+        while(fast->next!=NULL && fast->next->next!=NULL){
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        slow->next = reverse(slow->next);
+        slow = slow->next;
+        ListNode *dummy;
+        dummy = head;
+
+        while(slow!=NULL){
+            if(dummy->val!=slow->val) return false;
+            dummy = dummy->next;
+            slow = slow->next;
+        }
+        return true;
+    }
