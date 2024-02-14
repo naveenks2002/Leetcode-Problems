@@ -18,7 +18,6 @@ public:
         if(root==NULL)  return 0;
         q.push(root);
         while(!q.empty()){
-            vector<int> level;
             int size = q.size();
             for(int i=0; i<size; i++){
                 TreeNode* node = q.front();
