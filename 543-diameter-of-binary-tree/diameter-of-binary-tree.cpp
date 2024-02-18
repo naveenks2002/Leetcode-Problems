@@ -16,26 +16,15 @@ public:
         find_max(root);
         return maxi;
     }   
-    void find_max(TreeNode* node){
+    int find_max(TreeNode* node){
         if(node==NULL)
-            return ;
-
-        int lh = getHeight(node->left);
-        int rh = getHeight(node->right);
+            return 0;
+        
+        int lh = find_max(node->left);
+        int rh = find_max(node->right);
 
         maxi = max(maxi,lh + rh);
         
-        find_max(node->left);
-        find_max(node->right);
-    }
-    int getHeight(TreeNode* node){
-        if(node==NULL)
-            return 0;
-
-        int lh = getHeight(node->left);
-        int rh = getHeight(node->right);
-
         return 1 + max(lh,rh);
     }
-
 };
