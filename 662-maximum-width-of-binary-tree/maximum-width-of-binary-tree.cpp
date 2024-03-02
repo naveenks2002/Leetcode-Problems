@@ -17,12 +17,12 @@ public:
         
         queue<pair<TreeNode*, int>> q;
         q.push({root,0});
-        long long ans = 0;     
+        int ans = 0;     
         while(!q.empty()){
             TreeNode* node = q.front().first;
-            long long size = q.size();
-            long long first,last;
-            long long mini = q.front().second;
+            int size = q.size();
+            int first,last;
+            int mini = q.front().second;
             for(int i=0; i<size; i++){
                 TreeNode* node = q.front().first;
                 long long curr_id = q.front().second - mini;
