@@ -20,11 +20,7 @@ public:
             }
         }
         int cnt = 0;
-        vector<int> vis;
-        for(int i=0;i<v;i++) 
-        {
-            vis.push_back(0);
-        } 
+        vector<int> vis(v,0);
         for(int i=0; i<v; i++){
             if(!vis[i]){
                 cnt++;
